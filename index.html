@@ -717,7 +717,7 @@
     <div class="popup-content">
       <span class="close-popup">&times;</span>
       <h2>Subscribe to Our Newsletter</h2>
-      <form action="https://formspree.io/f/your-form-id" method="POST">
+      <form action="https://formspree.io/f/xyzkqeao" method="POST">
         <input type="email" name="email" placeholder="Your Email" required>
         <button type="submit" class="btn">Subscribe</button>
       </form>
@@ -750,6 +750,30 @@
           behavior: 'smooth'
         });
       });
+    });
+
+    // Newsletter Form Submission
+    const newsletterForm = document.querySelector("#newsletter-popup form");
+
+    newsletterForm.addEventListener("submit", async (e) => {
+      e.preventDefault(); // Prevent default form submission
+
+      const formData = new FormData(newsletterForm);
+      const response = await fetch(newsletterForm.action, {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      if (response.ok) {
+        alert("Thank you for subscribing!"); // Show success message
+        newsletterForm.reset(); // Clear the form
+        document.getElementById("newsletter-popup").style.display = "none"; // Close popup
+      } else {
+        alert("Something went wrong. Please try again."); // Show error message
+      }
     });
 
     // Newsletter Popup Logic
