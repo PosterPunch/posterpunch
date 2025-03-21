@@ -143,39 +143,41 @@
       transition: transform 0.3s, opacity 0.3s;
     }
 
-    /* Hero Section with Live Gradient Animation */
-    .hero {
-      position: relative;
-      text-align: center;
-      padding: 150px 20px;
-      background: linear-gradient(135deg, #1e1e1e, #2c3e50);
-      animation: gradientAnimation 10s ease infinite;
-      background-size: 200% 200%;
-    }
+    /* Hero Section with Custom Banner */
+.hero {
+  position: relative;
+  text-align: center;
+  padding: 0; /* Remove padding to fit the banner properly */
+  background-color: #121212; /* Fallback background color */
+}
 
-    @keyframes gradientAnimation {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+.hero-content {
+  position: relative;
+  width: 100%;
+}
 
-    .hero h1 {
-      font-size: 4rem;
-      margin-bottom: 10px;
-      color: #C0C0C0; /* Silver color */
-    }
+.hero-banner {
+  width: 100%; /* Ensure the banner spans the full width */
+  height: auto; /* Maintain aspect ratio */
+  display: block; /* Remove any extra spacing */
+}
 
-    .hero p {
-      font-size: 1.5rem;
-      margin-bottom: 30px;
-      color: #e0e0e0;
-    }
-
-    .cta-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-    }
+/* Gradient Overlay */
+.gradient-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(18, 18, 18, 0.8) 0%, /* Fade to black at the top */
+    rgba(18, 18, 18, 0) 20%, /* Transparent in the middle */
+    rgba(18, 18, 18, 0) 80%, /* Transparent in the middle */
+    rgba(18, 18, 18, 0.8) 100% /* Fade to black at the bottom */
+  );
+  pointer-events: none; /* Ensure clicks pass through to the image */
+}
 
     /* Portfolio Section */
     .portfolio {
@@ -599,16 +601,12 @@
   </header>
 
   <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-content">
-      <h1>Poster Punch</h1>
-      <p>Designs That Speak. Posters That Inspire.</p>
-      <div class="cta-buttons">
-        <a href="#portfolio" class="btn">View Portfolio</a>
-        <a href="#contact" class="btn">Get a Quote</a>
-      </div>
-    </div>
-  </section>
+<section class="hero">
+  <div class="hero-content">
+    <img src="banner.jpg" alt="Poster Punch Banner" class="hero-banner">
+    <div class="gradient-overlay"></div> <!-- Gradient overlay div -->
+  </div>
+</section>
 
   <!-- Portfolio Section -->
   <section id="portfolio" class="portfolio">
